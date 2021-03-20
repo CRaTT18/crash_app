@@ -1,7 +1,6 @@
 import React from "react";
 import {
   ScrollView,
-  SafeAreaView,
   View,
   Text,
   StyleSheet,
@@ -12,42 +11,39 @@ import Communications from "react-native-communications";
 
 const InfoScreen = ({ navigation }) => {
   return (
-    <SafeAreaView>
-      <ScrollView>
-        <Card image={require("../assets/Fairways_Logo_gray.png")}></Card>
-        <Card title="Please Complete Form:" wrapperStyle={{ margin: 20 }}>
-          <Text>Info form will go hereXXXXX</Text>
-          <Button
-            title="Save & Continue"
-            onPress={() => navigation.navigate("Instructions & Tips")}
-          />
-        </Card>
-        <View style={styles.row}>
-          <TouchableOpacity
-            activeOpacity={0.7}
-            style={styles.buttonStyle}
-            onPress={() => Communications.phonecall("2086973888", true)}
-          >
-            <Text style={styles.buttonTextStyle}>Call Shop</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            activeOpacity={0.7}
-            style={styles.buttonStyle}
-            onPress={() =>
-              Communications.email(
-                ["ratt18@hotmail.com"],
-                null,
-                null,
-                "Email From CrashApp",
-                "Please include your name and phone number along with preferred contact method."
-              )
-            }
-          >
-            <Text style={styles.buttonTextStyle}>Email Shop</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <ScrollView>
+      <Card wrapperStyle={{ margin: 20 }}>
+        <Text>Info form will go hereXXXXX</Text>
+        <Button
+          title="Save & Continue"
+          onPress={() => navigation.navigate("Instructions & Tips")}
+        />
+      </Card>
+      <View style={styles.row}>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          style={styles.buttonStyle}
+          onPress={() => Communications.phonecall("2086973888", true)}
+        >
+          <Text style={styles.buttonTextStyle}>Call Shop</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          style={styles.buttonStyle}
+          onPress={() =>
+            Communications.email(
+              ["ratt18@hotmail.com"],
+              null,
+              null,
+              "Email From CrashApp",
+              "Please include your name and phone number along with preferred contact method."
+            )
+          }
+        >
+          <Text style={styles.buttonTextStyle}>Email Shop</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 };
 
