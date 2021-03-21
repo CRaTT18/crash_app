@@ -34,38 +34,36 @@ const Instruction = ({ navigation }) => {
         <Text>Example photos:</Text>
         <Text></Text>
         <Image
-          source={require("../assets/Fairways_Logo_gray.png")}
+          source={require("../assets/vin.jpg")}
           style={{ width: 300, height: 200 }}
         />
+        <Text></Text>
         <Image
-          source={require("../assets/Fairways_Logo_gray.png")}
+          source={require("../assets/odo.jpg")}
           style={{ width: 300, height: 200 }}
         />
+        <Text></Text>
         <Image
-          source={require("../assets/Fairways_Logo_gray.png")}
+          source={require("../assets/rightfront.jpg")}
           style={{ width: 300, height: 200 }}
         />
+        <Text></Text>
         <Image
-          source={require("../assets/Fairways_Logo_gray.png")}
+          source={require("../assets/rightrear.jpg")}
           style={{ width: 300, height: 200 }}
         />
+        <Text></Text>
         <Image
-          source={require("../assets/Fairways_Logo_gray.png")}
+          source={require("../assets/leftrear.jpg")}
           style={{ width: 300, height: 200 }}
         />
+        <Text></Text>
         <Image
-          source={require("../assets/Fairways_Logo_gray.png")}
-          style={{ width: 300, height: 200 }}
-        />
-        <Image
-          source={require("../assets/Fairways_Logo_gray.png")}
-          style={{ width: 300, height: 200 }}
-        />
-        <Image
-          source={require("../assets/Fairways_Logo_gray.png")}
+          source={require("../assets/leftfront.jpg")}
           style={{ width: 300, height: 200 }}
         />
         <Button
+          style={{ marginTop: 20 }}
           title="Continue to Photos"
           onPress={() => navigation.navigate("Take Photos")}
         />

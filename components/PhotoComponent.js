@@ -12,11 +12,69 @@ import Communications from "react-native-communications";
 const PhotoScreen = ({ navigation }) => {
   return (
     <ScrollView>
-      <Text>Press buttons to take photos:</Text>
-      <Button
-        title="Press to Submit to Shop"
-        onPress={() => navigation.navigate("Thank you for using CrashApp!")}
-      />
+      <Card>
+        <Text>Press buttons to take photos:</Text>
+        <Button
+          style={{ marginTop: 20 }}
+          title="VIN Photo"
+          onPress={() => navigation.navigate("Thank you for using CrashApp!")}
+        />
+        <Button
+          style={{ marginTop: 20 }}
+          title="Odometer Photo"
+          onPress={() => navigation.navigate("Thank you for using CrashApp!")}
+        />
+        <Button
+          style={{ marginTop: 20 }}
+          title="Right Front Photo"
+          onPress={() => navigation.navigate("Thank you for using CrashApp!")}
+        />
+        <Button
+          style={{ marginTop: 20 }}
+          title="Right Rear Photo"
+          onPress={() => navigation.navigate("Thank you for using CrashApp!")}
+        />
+        <Button
+          style={{ marginTop: 20 }}
+          title="Left Rear Photo"
+          onPress={() => navigation.navigate("Thank you for using CrashApp!")}
+        />
+        <Button
+          style={{ marginTop: 20 }}
+          title="Left Front Photo"
+          onPress={() => navigation.navigate("Thank you for using CrashApp!")}
+        />
+        <Button
+          style={{ marginTop: 20 }}
+          title="Damage Photo"
+          onPress={() => navigation.navigate("Thank you for using CrashApp!")}
+        />
+        <Button
+          style={{ marginTop: 20 }}
+          title="Damage from Above Photo"
+          onPress={() => navigation.navigate("Thank you for using CrashApp!")}
+        />
+        <Button
+          style={{ marginTop: 20 }}
+          title="Damage from Below Photo"
+          onPress={() => navigation.navigate("Thank you for using CrashApp!")}
+        />
+        <Button
+          style={{ marginTop: 20 }}
+          title="Damage from Right Photo"
+          onPress={() => navigation.navigate("Thank you for using CrashApp!")}
+        />
+        <Button
+          style={{ marginTop: 20 }}
+          title="Damage from Left Photo"
+          onPress={() => navigation.navigate("Thank you for using CrashApp!")}
+        />
+        <Button
+          style={{ marginTop: 20 }}
+          title="Press to Submit to Shop"
+          onPress={() => navigation.navigate("Thank you for using CrashApp!")}
+        />
+      </Card>
       <View style={styles.row}>
         <TouchableOpacity
           activeOpacity={0.7}
