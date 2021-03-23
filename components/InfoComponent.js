@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 import {
   ScrollView,
   View,
@@ -9,20 +9,29 @@ import {
 import { Card, Button, Input, CheckBox } from "react-native-elements";
 import Communications from "react-native-communications";
 
-const customerInfo = {
-  userName: "Name",
-  email: "",
-  phone: "",
-  address: "",
-  insurance: "",
-  claimNum: "",
-};
-
 const InfoScreen = ({ navigation }) => {
-  const [infoState, setInfoState] = useState(customerInfo);
+  const [userInput, setUserInput] = useReducer(
+    (state, newState) => ({ ...state, ...newState }),
+    {
+      userName: "",
+      email: "",
+      phone: "",
+      address: "",
+      insurance: "",
+      claimNum: "",
+    }
+  );
+  const [call, setCall] = useState();
+  const [text, setText] = useState();
+  const [sendEmail, setSendEmail] = useState();
 
-  const saveHandler = (event) => {
-    console.log(customerInfo);
+  const handleCall = () => setCall(!call);
+  const handleText = () => setText(!text);
+  const handleSendEmail = () => setSendEmail(!sendEmail);
+
+  const handleChange = (evt) => {
+    const { name, value } = evt.target;
+    setUserInput({ [name]: value });
   };
 
   return (
@@ -31,65 +40,46 @@ const InfoScreen = ({ navigation }) => {
         <View>
           <Input
             placeholder="Name"
-            onChangeText={(userName) => setInfoState(userName)}
-            value={infoState.userName}
+            onChangeText={handleChange}
+            value={userInput.userName}
           />
           <Input
             placeholder="Email"
-            onChangeText={(email) => setInfoState(email)}
-            value={infoState.email}
+            onChangeText={handleChange}
+            value={userInput.email}
           />
           <Input
             placeholder="Phone"
-            onChange={(e) => {
-              setInfoState({ ...infoState, phone: e.target.value });
-            }}
-            value={infoState.phone}
+            onChangeText={handleChange}
+            value={userInput.phone}
           />
           <Input
             placeholder="Address"
-            onChange={(e) => {
-              setInfoState({ ...infoState, address: e.target.value });
-            }}
-            value={infoState.address}
+            onChangeText={handleChange}
+            value={userInput.address}
           />
           <Input
             placeholder="Insurance Company"
-            onChange={(e) => {
-              setInfoState({ ...infoState, insurance: e.target.value });
-            }}
-            value={infoState.insurance}
+            onChangeText={handleChange}
+            value={userInput.insurance}
           />
           <Input
             placeholder="Claim Number"
-            onChange={(e) => {
-              setInfoState({ ...infoState, claimNum: e.target.value });
-            }}
-            value={infoState.claimNum}
+            onChangeText={handleChange}
+            value={userInput.claimNum}
           />
           <Text>Preferred Method of Contact:</Text>
-          <CheckBox
-            title="Phone Call"
-            //checked={call}
-            //onPress={() => setInfoState({ call: !call })}
-          />
-          <CheckBox
-            title="Text Message"
-            //checked={infoState.text}
-            //onPress={() => setInfoState({ text: !text })}
-          />
+          <CheckBox title="Phone Call" checked={call} onPress={handleCall} />
+          <CheckBox title="Text Message" checked={text} onPress={handleText} />
           <CheckBox
             title="Email"
-            //checked={infoState.sendEmail}
-            //onPress={() => setInfoState({ sendEmail: !sendEmail })}
+            checked={sendEmail}
+            onPress={handleSendEmail}
           />
           <View>
             <Button
               title="Save & Continue"
-              onPress={() => {
-                saveHandler();
-                navigation.navigate("Instructions & Tips");
-              }}
+              onPress={() => navigation.navigate("Instructions & Tips")}
             />
           </View>
         </View>
