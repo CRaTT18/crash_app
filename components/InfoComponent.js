@@ -1,26 +1,10 @@
-import React, { useState, useReducer } from "react";
-import {
-  ScrollView,
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
-import { Card, Button, Input, CheckBox } from "react-native-elements";
-import Communications from "react-native-communications";
+import React, { useState } from "react";
+import { ScrollView, View, Text, TextInput, StyleSheet } from "react-native";
+import { Card, Button, CheckBox } from "react-native-elements";
+import { useForm, Controller } from "react-hook-form";
 
 const InfoScreen = ({ navigation }) => {
-  const [userInput, setUserInput] = useReducer(
-    (state, newState) => ({ ...state, ...newState }),
-    {
-      userName: "",
-      email: "",
-      phone: "",
-      address: "",
-      insurance: "",
-      claimNum: "",
-    }
-  );
+  const { control, handleSubmit, errors } = useForm();
   const [call, setCall] = useState();
   const [text, setText] = useState();
   const [sendEmail, setSendEmail] = useState();
@@ -29,45 +13,109 @@ const InfoScreen = ({ navigation }) => {
   const handleText = () => setText(!text);
   const handleSendEmail = () => setSendEmail(!sendEmail);
 
-  const handleChange = (evt) => {
-    const { name, value } = evt.target;
-    setUserInput({ [name]: value });
+  const onSubmit = (data) => {
+    console.log(data, call, text, sendEmail);
   };
-
   return (
     <ScrollView>
       <Card wrapperStyle={{ margin: 20 }}>
         <View>
-          <Input
-            placeholder="Name"
-            onChangeText={handleChange}
-            value={userInput.userName}
+          <Text style={styles.label}>Name</Text>
+          <Controller
+            control={control}
+            render={({ onChange, onBlur, value }) => (
+              <TextInput
+                style={styles.input}
+                onBlur={onBlur}
+                onChangeText={(value) => onChange(value)}
+                value={value}
+              />
+            )}
+            name="userName"
+            rules={{ required: true }}
+            defaultValue=""
           />
-          <Input
-            placeholder="Email"
-            onChangeText={handleChange}
-            value={userInput.email}
+          {errors.userName && <Text>Name is required.</Text>}
+
+          <Text style={styles.label}>Email</Text>
+          <Controller
+            control={control}
+            render={({ onChange, onBlur, value }) => (
+              <TextInput
+                style={styles.input}
+                onBlur={onBlur}
+                onChangeText={(value) => onChange(value)}
+                value={value}
+              />
+            )}
+            name="userEmail"
+            rules={{ required: true }}
+            defaultValue=""
           />
-          <Input
-            placeholder="Phone"
-            onChangeText={handleChange}
-            value={userInput.phone}
+          {errors.userEmail && <Text>Email is required.</Text>}
+
+          <Text style={styles.label}>Phone Number</Text>
+          <Controller
+            control={control}
+            render={({ onChange, onBlur, value }) => (
+              <TextInput
+                style={styles.input}
+                onBlur={onBlur}
+                onChangeText={(value) => onChange(value)}
+                value={value}
+              />
+            )}
+            name="userPhone"
+            rules={{ required: true }}
+            defaultValue=""
           />
-          <Input
-            placeholder="Address"
-            onChangeText={handleChange}
-            value={userInput.address}
+          {errors.userEmail && <Text>Phone number is required.</Text>}
+
+          <Text style={styles.label}>Address</Text>
+          <Controller
+            control={control}
+            render={({ onChange, onBlur, value }) => (
+              <TextInput
+                style={styles.input}
+                onBlur={onBlur}
+                onChangeText={(value) => onChange(value)}
+                value={value}
+              />
+            )}
+            name="userAddress"
+            defaultValue=""
           />
-          <Input
-            placeholder="Insurance Company"
-            onChangeText={handleChange}
-            value={userInput.insurance}
+
+          <Text style={styles.label}>Insurance Company</Text>
+          <Controller
+            control={control}
+            render={({ onChange, onBlur, value }) => (
+              <TextInput
+                style={styles.input}
+                onBlur={onBlur}
+                onChangeText={(value) => onChange(value)}
+                value={value}
+              />
+            )}
+            name="insurance"
+            defaultValue=""
           />
-          <Input
-            placeholder="Claim Number"
-            onChangeText={handleChange}
-            value={userInput.claimNum}
+
+          <Text style={styles.label}>Claim Number</Text>
+          <Controller
+            control={control}
+            render={({ onChange, onBlur, value }) => (
+              <TextInput
+                style={styles.input}
+                onBlur={onBlur}
+                onChangeText={(value) => onChange(value)}
+                value={value}
+              />
+            )}
+            name="claimNum"
+            defaultValue=""
           />
+          <Text></Text>
           <Text>Preferred Method of Contact:</Text>
           <CheckBox title="Phone Call" checked={call} onPress={handleCall} />
           <CheckBox title="Text Message" checked={text} onPress={handleText} />
@@ -76,59 +124,43 @@ const InfoScreen = ({ navigation }) => {
             checked={sendEmail}
             onPress={handleSendEmail}
           />
+
           <View>
             <Button
-              title="Save & Continue"
+              style={styles.button}
+              title="Save Claim Information"
+              onPress={handleSubmit(onSubmit)}
+            />
+            <Button
+              style={styles.button}
+              title="Continue"
               onPress={() => navigation.navigate("Instructions & Tips")}
             />
           </View>
         </View>
       </Card>
-      <View style={styles.row}>
-        <TouchableOpacity
-          activeOpacity={0.7}
-          style={styles.buttonStyle}
-          onPress={() => Communications.phonecall("2086973888", true)}
-        >
-          <Text style={styles.buttonTextStyle}>Call Shop</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          activeOpacity={0.7}
-          style={styles.buttonStyle}
-          onPress={() =>
-            Communications.email(
-              ["ratt18@hotmail.com"],
-              null,
-              null,
-              "Email From CrashApp",
-              "Please include your name and phone number along with preferred contact method."
-            )
-          }
-        >
-          <Text style={styles.buttonTextStyle}>Email Shop</Text>
-        </TouchableOpacity>
-      </View>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  row: {
-    alignItems: "center",
-    justifyContent: "center",
-    flex: 1,
-    flexDirection: "row",
-  },
-  buttonStyle: {
-    justifyContent: "center",
-    margin: 10,
-    padding: 15,
-    backgroundColor: "#39FF14",
-    borderRadius: 10,
-  },
-  buttonTextStyle: {
+  label: {
     color: "black",
-    textAlign: "center",
+    margin: 5,
+    marginLeft: 0,
+  },
+  button: {
+    marginTop: 20,
+    color: "white",
+    height: 40,
+    backgroundColor: "#ec5990",
+    borderRadius: 4,
+  },
+  input: {
+    backgroundColor: "lightgray",
+    height: 40,
+    padding: 10,
+    borderRadius: 4,
   },
 });
 
