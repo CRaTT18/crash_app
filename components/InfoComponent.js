@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ScrollView, View, Text, TextInput, StyleSheet } from "react-native";
-import { Card, Button, CheckBox } from "react-native-elements";
+import { Card, Button, Icon, CheckBox } from "react-native-elements";
 import { useForm, Controller } from "react-hook-form";
 
 const InfoScreen = ({ navigation }) => {
@@ -128,15 +128,62 @@ const InfoScreen = ({ navigation }) => {
           <View>
             <Button
               style={styles.button}
+              icon={
+                <Icon
+                  name="save"
+                  type="font-awesome"
+                  color="white"
+                  iconStyle={{ marginRight: 10 }}
+                />
+              }
               title="Save Claim Information"
               onPress={handleSubmit(onSubmit)}
             />
             <Button
               style={styles.button}
+              icon={
+                <Icon
+                  name="angle-right"
+                  type="font-awesome"
+                  color="white"
+                  iconStyle={{ marginRight: 10 }}
+                />
+              }
               title="Continue"
               onPress={() => navigation.navigate("Instructions & Tips")}
             />
           </View>
+        </View>
+        <View style={styles.row}>
+          <Button
+            title="Email Shop"
+            buttonStyle={{ backgroundColor: "lightgray", margin: 20 }}
+            icon={
+              <Icon
+                name="envelope"
+                type="font-awesome"
+                color="gray"
+                iconStyle={{ marginRight: 7 }}
+              />
+            }
+            onPress={() => navigation.navigate("Claim Information")}
+          ></Button>
+          <Button
+            title="Call Shop"
+            buttonStyle={{
+              backgroundColor: "lightgray",
+              margin: 20,
+            }}
+            icon={
+              <Icon
+                name="phone"
+                type="font-awesome"
+                color="gray"
+                iconStyle={{ marginRight: 10 }}
+              />
+            }
+            onPress={() => navigation.navigate("Claim Information")}
+          ></Button>
         </View>
       </Card>
     </ScrollView>
@@ -144,6 +191,12 @@ const InfoScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
+  row: {
+    alignItems: "center",
+    justifyContent: "center",
+    flex: 1,
+    flexDirection: "row",
+  },
   label: {
     color: "black",
     margin: 5,

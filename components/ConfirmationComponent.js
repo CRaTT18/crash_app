@@ -1,14 +1,6 @@
-import React, { Component } from "react";
-import {
-  ScrollView,
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Image,
-} from "react-native";
-import { Card, Button } from "react-native-elements";
-import Communications from "react-native-communications";
+import React from "react";
+import { ScrollView, View, Text, StyleSheet, Image } from "react-native";
+import { Card, Button, Icon } from "react-native-elements";
 
 const Confirmation = ({ navigation }) => {
   return (
@@ -19,41 +11,56 @@ const Confirmation = ({ navigation }) => {
           may call or email you if we have any questions or need additional
           information. Have a great day!
         </Text>
-        <Button
-          style={{ marginTop: 20 }}
-          title="Start Over"
-          onPress={() => navigation.navigate("Vehicle Safety Disclaimer")}
-        />
         <Text></Text>
         <Image
           source={require("../assets/shop.jpg")}
           style={{ width: 300, height: 200 }}
         />
-      </Card>
-      <View style={styles.row}>
-        <TouchableOpacity
-          activeOpacity={0.7}
-          style={styles.buttonStyle}
-          onPress={() => Communications.phonecall("2086973888", true)}
-        >
-          <Text style={styles.buttonTextStyle}>Call Shop</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          activeOpacity={0.7}
-          style={styles.buttonStyle}
-          onPress={() =>
-            Communications.email(
-              ["ratt18@hotmail.com"],
-              null,
-              null,
-              "Email From CrashApp",
-              "Please include your name and phone number along with preferred contact method."
-            )
+        <Button
+          style={{ marginTop: 20 }}
+          icon={
+            <Icon
+              name="retweet"
+              type="font-awesome"
+              color="white"
+              iconStyle={{ marginRight: 10 }}
+            />
           }
-        >
-          <Text style={styles.buttonTextStyle}>Email Shop</Text>
-        </TouchableOpacity>
-      </View>
+          title="Start Over"
+          onPress={() => navigation.navigate("Vehicle Safety Disclaimer")}
+        />
+        <View style={styles.row}>
+          <Button
+            title="Email Shop"
+            buttonStyle={{ backgroundColor: "lightgray", margin: 20 }}
+            icon={
+              <Icon
+                name="envelope"
+                type="font-awesome"
+                color="gray"
+                iconStyle={{ marginRight: 7 }}
+              />
+            }
+            onPress={() => navigation.navigate("Claim Information")}
+          ></Button>
+          <Button
+            title="Call Shop"
+            buttonStyle={{
+              backgroundColor: "lightgray",
+              margin: 20,
+            }}
+            icon={
+              <Icon
+                name="phone"
+                type="font-awesome"
+                color="gray"
+                iconStyle={{ marginRight: 10 }}
+              />
+            }
+            onPress={() => navigation.navigate("Claim Information")}
+          ></Button>
+        </View>
+      </Card>
     </ScrollView>
   );
 };
@@ -64,17 +71,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flex: 1,
     flexDirection: "row",
-  },
-  buttonStyle: {
-    justifyContent: "center",
-    margin: 10,
-    padding: 15,
-    backgroundColor: "#39FF14",
-    borderRadius: 10,
-  },
-  buttonTextStyle: {
-    color: "black",
-    textAlign: "center",
   },
 });
 
