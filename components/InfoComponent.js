@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { ScrollView, View, Text, TextInput, StyleSheet } from "react-native";
 import { Card, Button, Icon, CheckBox } from "react-native-elements";
 import { useForm, Controller } from "react-hook-form";
+import * as MailComposer from "expo-mail-composer";
+import * as Linking from "expo-linking";
 
 const InfoScreen = ({ navigation }) => {
   const { control, handleSubmit, errors } = useForm();
@@ -16,6 +18,16 @@ const InfoScreen = ({ navigation }) => {
   const onSubmit = (data) => {
     console.log(data, call, text, sendEmail);
   };
+
+  const sendMail = () => {
+    MailComposer.composeAsync({
+      recipients: ["ratt18@hotmail.com"],
+      subject: "Email from CrashApp",
+      body:
+        "Please include contact information and preferred method of contact.",
+    });
+  };
+
   return (
     <ScrollView>
       <Card wrapperStyle={{ margin: 20 }}>
@@ -166,7 +178,7 @@ const InfoScreen = ({ navigation }) => {
                 iconStyle={{ marginRight: 7 }}
               />
             }
-            onPress={() => navigation.navigate("Claim Information")}
+            onPress={sendMail}
           ></Button>
           <Button
             title="Call Shop"

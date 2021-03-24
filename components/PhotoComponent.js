@@ -1,8 +1,19 @@
 import React from "react";
 import { ScrollView, View, Text, StyleSheet } from "react-native";
 import { Card, Button, Icon } from "react-native-elements";
+import * as MailComposer from "expo-mail-composer";
+import * as Linking from "expo-linking";
 
 const PhotoScreen = ({ navigation }) => {
+  const sendMail = () => {
+    MailComposer.composeAsync({
+      recipients: ["ratt18@hotmail.com"],
+      subject: "Email from CrashApp",
+      body:
+        "Please include contact information and preferred method of contact.",
+    });
+  };
+
   return (
     <ScrollView>
       <Card>
@@ -87,7 +98,7 @@ const PhotoScreen = ({ navigation }) => {
                 iconStyle={{ marginRight: 7 }}
               />
             }
-            onPress={() => navigation.navigate("Claim Information")}
+            onPress={sendMail}
           ></Button>
           <Button
             title="Call Shop"
