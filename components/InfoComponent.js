@@ -28,6 +28,11 @@ const InfoScreen = ({ navigation }) => {
     });
   };
 
+  const callShop = () => {
+    const url = "tel://12086973888";
+    Linking.openURL(url);
+  };
+
   return (
     <ScrollView>
       <Card wrapperStyle={{ margin: 20 }}>
@@ -194,7 +199,7 @@ const InfoScreen = ({ navigation }) => {
                 iconStyle={{ marginRight: 10 }}
               />
             }
-            onPress={() => navigation.navigate("Claim Information")}
+            onPress={callShop}
           ></Button>
         </View>
       </Card>
