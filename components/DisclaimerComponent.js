@@ -33,7 +33,7 @@ const MainScreen = ({ navigation }) => {
           bottom of your screen to call or email us at any time.
         </Text>
         <Button
-          style={{ marginTop: 20 }}
+          buttonStyle={{ marginTop: 20 }}
           icon={
             <Icon
               name="angle-right"

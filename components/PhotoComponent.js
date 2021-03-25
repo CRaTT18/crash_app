@@ -488,7 +488,7 @@ const PhotoScreen = ({ navigation }) => {
           />
         </View>
         <Button
-          style={styles.button}
+          buttonStyle={styles.button}
           icon={
             <Icon
               name="share-square"
@@ -555,7 +555,7 @@ const styles = StyleSheet.create({
     height: 60,
   },
   button: {
-    margin: 10,
+    marginTop: 10,
   },
 });
 

@@ -157,7 +157,7 @@ const InfoScreen = ({ navigation }) => {
               onPress={handleSubmit(onSubmit)}
             />
             <Button
-              style={styles.button}
+              buttonStyle={styles.button}
               icon={
                 <Icon
                   name="angle-right"
@@ -221,10 +221,6 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 20,
-    color: "white",
-    height: 40,
-    backgroundColor: "#ec5990",
-    borderRadius: 4,
   },
   input: {
     backgroundColor: "lightgray",

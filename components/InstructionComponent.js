@@ -71,7 +71,7 @@ const Instruction = ({ navigation }) => {
           style={{ width: 300, height: 200 }}
         />
         <Button
-          style={{ marginTop: 20 }}
+          buttonStyle={{ marginTop: 20 }}
           icon={
             <Icon
               name="angle-right"
