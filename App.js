@@ -8,7 +8,7 @@ import InstructionScreen from "./components/InstructionComponent";
 import PhotoScreen from "./components/PhotoComponent";
 import ConfirmationScreen from "./components/ConfirmationComponent";
 import { Card } from "react-native-elements";
-import { SafeAreaView } from "react-native";
+import { View, SafeAreaView, Image, StyleSheet } from "react-native";
 
 const RootStack = createStackNavigator();
 
@@ -16,7 +16,13 @@ const App = () => {
   return (
     <>
       <SafeAreaView>
-        <Card image={require("./assets/Fairways_Logo_gray.png")}></Card>
+        <View>
+          <Image
+            source={require("./assets/Fairways_Logo_gray.png")}
+            resizeMode={"cover"}
+            style={{ margin: 10 }}
+          />
+        </View>
       </SafeAreaView>
       <NavigationContainer>
         <RootStack.Navigator>
@@ -39,5 +45,9 @@ const App = () => {
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  header: {},
+});
 
 export default App;
