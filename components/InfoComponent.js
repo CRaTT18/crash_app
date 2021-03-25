@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ScrollView, View, Text, TextInput, StyleSheet } from "react-native";
 import { Card, Button, Icon, CheckBox } from "react-native-elements";
 import { useForm, Controller } from "react-hook-form";
 import * as MailComposer from "expo-mail-composer";
 import * as Linking from "expo-linking";
+import * as SecureStore from "expo-secure-store";
 
 const InfoScreen = ({ navigation }) => {
   const { control, handleSubmit, errors } = useForm();
@@ -16,8 +17,30 @@ const InfoScreen = ({ navigation }) => {
   const handleSendEmail = () => setSendEmail(!sendEmail);
 
   const onSubmit = (data) => {
-    console.log(data, call, text, sendEmail);
+    console.log(
+      JSON.stringify(data),
+      `Call: ${call}, Text: ${text}, Send Email: ${sendEmail}`
+    );
+    SecureStore.setItemAsync("data", JSON.stringify(data)).catch((error) =>
+      console.log("Could not save user info", error)
+    );
+    //console.log(userinfo);
   };
+
+  useEffect(() => {
+    SecureStore.getItemAsync("data").then((userdata) => {
+      const data = JSON.parse(userdata);
+      if (data) {
+        data.claimNum;
+        data.insurance;
+        data.userAddress;
+        data.userEmail;
+        data.userName;
+        data.userPhone;
+        console.log(data);
+      }
+    });
+  });
 
   const sendMail = () => {
     MailComposer.composeAsync({

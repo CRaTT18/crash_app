@@ -19,6 +19,11 @@ const Confirmation = ({ navigation }) => {
     Linking.openURL(url);
   };
 
+  const openWeb = () => {
+    const url = "https://cratt18.github.io";
+    Linking.openURL(url);
+  };
+
   return (
     <ScrollView>
       <Card wrapperStyle={{ margin: 20 }}>
@@ -36,14 +41,14 @@ const Confirmation = ({ navigation }) => {
           buttonStyle={{ marginTop: 20 }}
           icon={
             <Icon
-              name="retweet"
+              name="desktop"
               type="font-awesome"
               color="white"
               iconStyle={{ marginRight: 10 }}
             />
           }
-          title="Start Over"
-          onPress={() => navigation.navigate("Vehicle Safety Disclaimer")}
+          title="Visit Our Website"
+          onPress={openWeb}
         />
         <View style={styles.row}>
           <Button

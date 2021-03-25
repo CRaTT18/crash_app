@@ -7,8 +7,7 @@ import InfoScreen from "./components/InfoComponent";
 import InstructionScreen from "./components/InstructionComponent";
 import PhotoScreen from "./components/PhotoComponent";
 import ConfirmationScreen from "./components/ConfirmationComponent";
-import { Card } from "react-native-elements";
-import { View, SafeAreaView, Image, StyleSheet } from "react-native";
+import { View, SafeAreaView, Image } from "react-native";
 
 const RootStack = createStackNavigator();
 
@@ -45,9 +44,5 @@ const App = () => {
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  header: {},
-});
 
 export default App;
