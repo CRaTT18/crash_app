@@ -1,24 +1,9 @@
 import React from "react";
-import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
+import { Text, ScrollView, Image } from "react-native";
 import { Card, Button, Icon } from "react-native-elements";
-import * as MailComposer from "expo-mail-composer";
-import * as Linking from "expo-linking";
+import Footer from "./Footer";
 
 const Instruction = ({ navigation }) => {
-  const sendMail = () => {
-    MailComposer.composeAsync({
-      recipients: ["ratt18@hotmail.com"],
-      subject: "Email from CrashApp",
-      body:
-        "Please include contact information and preferred method of contact.",
-    });
-  };
-
-  const callShop = () => {
-    const url = "tel://12086973888";
-    Linking.openURL(url);
-  };
-
   return (
     <ScrollView>
       <Card wrapperStyle={{ margin: 20 }}>
@@ -83,49 +68,10 @@ const Instruction = ({ navigation }) => {
           title="Continue to Photos"
           onPress={() => navigation.navigate("Take Photos")}
         />
-        <View style={styles.row}>
-          <Button
-            title="Email Shop"
-            buttonStyle={{ backgroundColor: "lightgray", margin: 20 }}
-            icon={
-              <Icon
-                name="envelope"
-                type="font-awesome"
-                color="gray"
-                iconStyle={{ marginRight: 7 }}
-              />
-            }
-            onPress={sendMail}
-          ></Button>
-          <Button
-            title="Call Shop"
-            buttonStyle={{
-              backgroundColor: "lightgray",
-              margin: 20,
-            }}
-            icon={
-              <Icon
-                name="phone"
-                type="font-awesome"
-                color="gray"
-                iconStyle={{ marginRight: 10 }}
-              />
-            }
-            onPress={callShop}
-          ></Button>
-        </View>
+        <Footer />
       </Card>
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  row: {
-    alignItems: "center",
-    justifyContent: "center",
-    flex: 1,
-    flexDirection: "row",
-  },
-});
 
 export default Instruction;

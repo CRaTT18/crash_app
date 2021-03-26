@@ -1,24 +1,10 @@
 import React from "react";
 import { ScrollView, View, Text, StyleSheet, Image } from "react-native";
 import { Card, Button, Icon } from "react-native-elements";
-import * as MailComposer from "expo-mail-composer";
+import Footer from "./Footer";
 import * as Linking from "expo-linking";
 
 const Confirmation = ({ navigation }) => {
-  const sendMail = () => {
-    MailComposer.composeAsync({
-      recipients: ["ratt18@hotmail.com"],
-      subject: "Email from CrashApp",
-      body:
-        "Please include contact information and preferred method of contact.",
-    });
-  };
-
-  const callShop = () => {
-    const url = "tel://12086973888";
-    Linking.openURL(url);
-  };
-
   const openWeb = () => {
     const url = "https://cratt18.github.io";
     Linking.openURL(url);
@@ -50,37 +36,7 @@ const Confirmation = ({ navigation }) => {
           title="Visit Our Website"
           onPress={openWeb}
         />
-        <View style={styles.row}>
-          <Button
-            title="Email Shop"
-            buttonStyle={{ backgroundColor: "lightgray", margin: 20 }}
-            icon={
-              <Icon
-                name="envelope"
-                type="font-awesome"
-                color="gray"
-                iconStyle={{ marginRight: 7 }}
-              />
-            }
-            onPress={sendMail}
-          ></Button>
-          <Button
-            title="Call Shop"
-            buttonStyle={{
-              backgroundColor: "lightgray",
-              margin: 20,
-            }}
-            icon={
-              <Icon
-                name="phone"
-                type="font-awesome"
-                color="gray"
-                iconStyle={{ marginRight: 10 }}
-              />
-            }
-            onPress={callShop}
-          ></Button>
-        </View>
+        <Footer />
       </Card>
     </ScrollView>
   );

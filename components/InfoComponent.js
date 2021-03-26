@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ScrollView, View, Text, TextInput, StyleSheet } from "react-native";
 import { Card, Button, Icon, CheckBox } from "react-native-elements";
 import { useForm, Controller } from "react-hook-form";
-import * as MailComposer from "expo-mail-composer";
-import * as Linking from "expo-linking";
+import Footer from "./Footer";
 import * as SecureStore from "expo-secure-store";
 
 const InfoScreen = ({ navigation }) => {
@@ -47,21 +46,7 @@ const InfoScreen = ({ navigation }) => {
         console.log(data.userName, data.insurance);
       }
     });
-  }, [data]);
-
-  function sendMail() {
-    MailComposer.composeAsync({
-      recipients: ["ratt18@hotmail.com"],
-      subject: "Email from CrashApp",
-      body:
-        "Please include contact information and preferred method of contact.",
-    });
-  }
-
-  const callShop = () => {
-    const url = "tel://12086973888";
-    Linking.openURL(url);
-  };
+  }, []);
 
   return (
     <ScrollView>
@@ -201,49 +186,13 @@ const InfoScreen = ({ navigation }) => {
             />
           </View>
         </View>
-        <View style={styles.row}>
-          <Button
-            title="Email Shop"
-            buttonStyle={{ backgroundColor: "lightgray", margin: 20 }}
-            icon={
-              <Icon
-                name="envelope"
-                type="font-awesome"
-                color="gray"
-                iconStyle={{ marginRight: 7 }}
-              />
-            }
-            onPress={sendMail}
-          ></Button>
-          <Button
-            title="Call Shop"
-            buttonStyle={{
-              backgroundColor: "lightgray",
-              margin: 20,
-            }}
-            icon={
-              <Icon
-                name="phone"
-                type="font-awesome"
-                color="gray"
-                iconStyle={{ marginRight: 10 }}
-              />
-            }
-            onPress={callShop}
-          ></Button>
-        </View>
+        <Footer />
       </Card>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  row: {
-    alignItems: "center",
-    justifyContent: "center",
-    flex: 1,
-    flexDirection: "row",
-  },
   label: {
     color: "black",
     margin: 5,
