@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { ScrollView, View, Text, StyleSheet, Image } from "react-native";
+import {
+  ScrollView,
+  Text,
+  StyleSheet,
+  Image,
+  ImageBackground,
+} from "react-native";
 import { Card, Button, Icon } from "react-native-elements";
 import Footer from "./Footer";
 import * as ImagePicker from "expo-image-picker";
@@ -249,231 +255,270 @@ const PhotoScreen = ({ navigation }) => {
   };
 
   return (
-    <ScrollView>
+    <ScrollView
+      style={{ contentContainer: "alignItemsCenter, justifyContent" }}
+    >
       <Card>
-        <Text>Press buttons to take photos:</Text>
-        <View style={styles.imageContainer}>
+        <Text>
+          Press buttons to take photos. Be sure to hold your phone
+          sideways(landscape) while taking photos. Preview images will populate
+          as you take required photos:
+        </Text>
+        <ImageBackground
+          source={require("../assets/take_photo.png")}
+          style={styles.image}
+        >
           <Image
             source={{ uri: vinImage }}
-            loadingIndicatorSource={require("../assets/favicon.png")}
+            loadingIndicatorSource={require("../assets/spinner-1.gif")}
             style={styles.image}
           />
-          <Button
-            style={styles.button}
-            icon={
-              <Icon
-                name="camera"
-                type="font-awesome"
-                color="white"
-                iconStyle={{ marginRight: 10 }}
-              />
-            }
-            title="VIN Photo"
-            onPress={getVinImageFromCamera}
-          />
-        </View>
-        <View style={styles.imageContainer}>
-          <Image
-            source={{ uri: odoImage }}
-            //loadingIndicatorSource={require("../assets/spinner-1.gif.jpg")}
-            style={styles.image}
-          />
-          <Button
-            style={styles.button}
-            icon={
-              <Icon
-                name="camera"
-                type="font-awesome"
-                color="white"
-                iconStyle={{ marginRight: 10 }}
-              />
-            }
-            title="Odometer Photo"
-            onPress={getOdoImageFromCamera}
-          />
-        </View>
-        <View style={styles.imageContainer}>
-          <Image
-            source={{ uri: rfImage }}
-            //loadingIndicatorSource={require("../assets/spinner-1.gif.jpg")}
-            style={styles.image}
-          />
-          <Button
-            style={styles.button}
-            icon={
-              <Icon
-                name="camera"
-                type="font-awesome"
-                color="white"
-                iconStyle={{ marginRight: 10 }}
-              />
-            }
-            title="Right Front Photo"
-            onPress={getRfImageFromCamera}
-          />
-        </View>
-        <View style={styles.imageContainer}>
-          <Image
-            source={{ uri: rrImage }}
-            //loadingIndicatorSource={require("../assets/spinner-1.gif.jpg")}
-            style={styles.image}
-          />
-          <Button
-            style={styles.button}
-            icon={
-              <Icon
-                name="camera"
-                type="font-awesome"
-                color="white"
-                iconStyle={{ marginRight: 10 }}
-              />
-            }
-            title="Right Rear Photo"
-            onPress={getRrImageFromCamera}
-          />
-        </View>
-        <View style={styles.imageContainer}>
-          <Image
-            source={{ uri: lrImage }}
-            //loadingIndicatorSource={require("../assets/spinner-1.gif.jpg")}
-            style={styles.image}
-          />
-          <Button
-            style={styles.button}
-            icon={
-              <Icon
-                name="camera"
-                type="font-awesome"
-                color="white"
-                iconStyle={{ marginRight: 10 }}
-              />
-            }
-            title="Left Rear Photo"
-            onPress={getLrImageFromCamera}
-          />
-        </View>
-        <View style={styles.imageContainer}>
-          <Image
-            source={{ uri: lfImage }}
-            //loadingIndicatorSource={require("../assets/spinner-1.gif.jpg")}
-            style={styles.image}
-          />
-          <Button
-            style={styles.button}
-            icon={
-              <Icon
-                name="camera"
-                type="font-awesome"
-                color="white"
-                iconStyle={{ marginRight: 10 }}
-              />
-            }
-            title="Left Front Photo"
-            onPress={getLfImageFromCamera}
-          />
-        </View>
-        <View style={styles.imageContainer}>
-          <Image
-            source={{ uri: damageImage }}
-            //loadingIndicatorSource={require("../assets/spinner-1.gif.jpg")}
-            style={styles.image}
-          />
-          <Button
-            style={styles.button}
-            icon={
-              <Icon
-                name="camera"
-                type="font-awesome"
-                color="white"
-                iconStyle={{ marginRight: 10 }}
-              />
-            }
-            title="Damage Photo"
-            onPress={getDamageImageFromCamera}
-          />
-        </View>
-        <View style={styles.imageContainer}>
-          <Image
-            source={{ uri: damageTopImage }}
-            //loadingIndicatorSource={require("../assets/spinner-1.gif.jpg")}
-            style={styles.image}
-          />
-          <Button
-            style={styles.button}
-            icon={
-              <Icon
-                name="camera"
-                type="font-awesome"
-                color="white"
-                iconStyle={{ marginRight: 10 }}
-              />
-            }
-            title="Damage from Above Photo"
-            onPress={getDamageTopImageFromCamera}
-          />
-        </View>
-        <View style={styles.imageContainer}>
-          <Image
-            source={{ uri: damageBottomImage }}
-            //loadingIndicatorSource={require("../assets/spinner-1.gif.jpg")}
-            style={styles.image}
-          />
-          <Button
-            style={styles.button}
-            icon={
-              <Icon
-                name="camera"
-                type="font-awesome"
-                color="white"
-                iconStyle={{ marginRight: 10 }}
-              />
-            }
-            title="Damage from Below Photo"
-            onPress={getDamageBottomImageFromCamera}
-          />
-        </View>
-        <View style={styles.imageContainer}>
-          <Image
-            source={{ uri: damageRightImage }}
-            //loadingIndicatorSource={require("../assets/spinner-1.gif.jpg")}
-            style={styles.image}
-          />
-          <Button
-            style={styles.button}
-            icon={
-              <Icon
-                name="camera"
-                type="font-awesome"
-                color="white"
-                iconStyle={{ marginRight: 10 }}
-              />
-            }
-            title="Damage from Right Photo"
-            onPress={getDamageRightImageFromCamera}
-          />
-        </View>
-        <View style={styles.imageContainer}>
-          <Image
-            source={{ uri: damageLeftImage }}
-            //loadingIndicatorSource={require("../assets/spinner-1.gif.jpg")}
-            style={styles.image}
-          />
-          <Button
-            style={styles.button}
-            icon={
-              <Icon
-                name="camera"
-                type="font-awesome"
-                color="white"
-                iconStyle={{ marginRight: 10 }}
-              />
-            }
-            title="Damage from Left Photo"
-            onPress={getDamageLeftImageFromCamera}
-          />
-        </View>
+        </ImageBackground>
         <Button
           buttonStyle={styles.button}
+          icon={
+            <Icon
+              name="camera"
+              type="font-awesome"
+              color="white"
+              iconStyle={{ marginRight: 10 }}
+            />
+          }
+          title="VIN Photo"
+          onPress={getVinImageFromCamera}
+        />
+        <ImageBackground
+          source={require("../assets/take_photo.png")}
+          style={styles.image}
+        >
+          <Image
+            source={{ uri: odoImage }}
+            loadingIndicatorSource={require("../assets/spinner-1.gif")}
+            style={styles.image}
+          />
+        </ImageBackground>
+        <Button
+          buttonStyle={styles.button}
+          icon={
+            <Icon
+              name="camera"
+              type="font-awesome"
+              color="white"
+              iconStyle={{ marginRight: 10 }}
+            />
+          }
+          title="Odometer Photo"
+          onPress={getOdoImageFromCamera}
+        />
+        <ImageBackground
+          source={require("../assets/take_photo.png")}
+          style={styles.image}
+        >
+          <Image
+            source={{ uri: rfImage }}
+            loadingIndicatorSource={require("../assets/spinner-1.gif")}
+            style={styles.image}
+          />
+        </ImageBackground>
+        <Button
+          buttonStyle={styles.button}
+          icon={
+            <Icon
+              name="camera"
+              type="font-awesome"
+              color="white"
+              iconStyle={{ marginRight: 10 }}
+            />
+          }
+          title="Right Front Photo"
+          onPress={getRfImageFromCamera}
+        />
+        <ImageBackground
+          source={require("../assets/take_photo.png")}
+          style={styles.image}
+        >
+          <Image
+            source={{ uri: rrImage }}
+            loadingIndicatorSource={require("../assets/spinner-1.gif")}
+            style={styles.image}
+          />
+        </ImageBackground>
+        <Button
+          buttonStyle={styles.button}
+          icon={
+            <Icon
+              name="camera"
+              type="font-awesome"
+              color="white"
+              iconStyle={{ marginRight: 10 }}
+            />
+          }
+          title="Right Rear Photo"
+          onPress={getRrImageFromCamera}
+        />
+        <ImageBackground
+          source={require("../assets/take_photo.png")}
+          style={styles.image}
+        >
+          <Image
+            source={{ uri: lrImage }}
+            loadingIndicatorSource={require("../assets/spinner-1.gif")}
+            style={styles.image}
+          />
+        </ImageBackground>
+        <Button
+          buttonStyle={styles.button}
+          icon={
+            <Icon
+              name="camera"
+              type="font-awesome"
+              color="white"
+              iconStyle={{ marginRight: 10 }}
+            />
+          }
+          title="Left Rear Photo"
+          onPress={getLrImageFromCamera}
+        />
+        <ImageBackground
+          source={require("../assets/take_photo.png")}
+          style={styles.image}
+        >
+          <Image
+            source={{ uri: lfImage }}
+            loadingIndicatorSource={require("../assets/spinner-1.gif")}
+            style={styles.image}
+          />
+        </ImageBackground>
+        <Button
+          buttonStyle={styles.button}
+          icon={
+            <Icon
+              name="camera"
+              type="font-awesome"
+              color="white"
+              iconStyle={{ marginRight: 10 }}
+            />
+          }
+          title="Left Front Photo"
+          onPress={getLfImageFromCamera}
+        />
+        <ImageBackground
+          source={require("../assets/take_photo.png")}
+          style={styles.image}
+        >
+          <Image
+            source={{ uri: damageImage }}
+            loadingIndicatorSource={require("../assets/spinner-1.gif")}
+            style={styles.image}
+          />
+        </ImageBackground>
+        <Button
+          buttonStyle={styles.button}
+          icon={
+            <Icon
+              name="camera"
+              type="font-awesome"
+              color="white"
+              iconStyle={{ marginRight: 10 }}
+            />
+          }
+          title="Damage Photo"
+          onPress={getDamageImageFromCamera}
+        />
+        <ImageBackground
+          source={require("../assets/take_photo.png")}
+          style={styles.image}
+        >
+          <Image
+            source={{ uri: damageTopImage }}
+            loadingIndicatorSource={require("../assets/spinner-1.gif")}
+            style={styles.image}
+          />
+        </ImageBackground>
+        <Button
+          buttonStyle={styles.button}
+          icon={
+            <Icon
+              name="camera"
+              type="font-awesome"
+              color="white"
+              iconStyle={{ marginRight: 10 }}
+            />
+          }
+          title="Damage from Above Photo"
+          onPress={getDamageTopImageFromCamera}
+        />
+        <ImageBackground
+          source={require("../assets/take_photo.png")}
+          style={styles.image}
+        >
+          <Image
+            source={{ uri: damageBottomImage }}
+            loadingIndicatorSource={require("../assets/spinner-1.gif")}
+            style={styles.image}
+          />
+        </ImageBackground>
+        <Button
+          buttonStyle={styles.button}
+          icon={
+            <Icon
+              name="camera"
+              type="font-awesome"
+              color="white"
+              iconStyle={{ marginRight: 10 }}
+            />
+          }
+          title="Damage from Below Photo"
+          onPress={getDamageBottomImageFromCamera}
+        />
+        <ImageBackground
+          source={require("../assets/take_photo.png")}
+          style={styles.image}
+        >
+          <Image
+            source={{ uri: damageRightImage }}
+            loadingIndicatorSource={require("../assets/spinner-1.gif")}
+            style={styles.image}
+          />
+        </ImageBackground>
+        <Button
+          buttonStyle={styles.button}
+          icon={
+            <Icon
+              name="camera"
+              type="font-awesome"
+              color="white"
+              iconStyle={{ marginRight: 10 }}
+            />
+          }
+          title="Damage from Right Photo"
+          onPress={getDamageRightImageFromCamera}
+        />
+        <ImageBackground
+          source={require("../assets/take_photo.png")}
+          style={styles.image}
+        >
+          <Image
+            source={{ uri: damageLeftImage }}
+            loadingIndicatorSource={require("../assets/spinner-1.gif")}
+            style={styles.image}
+          />
+        </ImageBackground>
+        <Button
+          buttonStyle={styles.button}
+          icon={
+            <Icon
+              name="camera"
+              type="font-awesome"
+              color="white"
+              iconStyle={{ marginRight: 10 }}
+            />
+          }
+          title="Damage from Left Photo"
+          onPress={getDamageLeftImageFromCamera}
+        />
+        <Button
+          buttonStyle={{ marginTop: 20, backgroundColor: "green" }}
           icon={
             <Icon
               name="share-square"
@@ -492,16 +537,10 @@ const PhotoScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  imageContainer: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-evenly",
-    margin: 10,
-  },
   image: {
-    width: 60,
-    height: 60,
+    width: 300,
+    height: 200,
+    margin: 10,
   },
   button: {
     marginTop: 10,

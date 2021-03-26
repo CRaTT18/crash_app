@@ -28,31 +28,37 @@ const Instruction = ({ navigation }) => {
         <Text></Text>
         <Image
           source={require("../assets/vin.jpg")}
+          loadingIndicatorSource={require("../assets/spinner-1.gif")}
           style={{ width: 300, height: 200 }}
         />
         <Text></Text>
         <Image
           source={require("../assets/odo.jpg")}
+          loadingIndicatorSource={require("../assets/spinner-1.gif")}
           style={{ width: 300, height: 200 }}
         />
         <Text></Text>
         <Image
           source={require("../assets/rightfront.jpg")}
+          loadingIndicatorSource={require("../assets/spinner-1.gif")}
           style={{ width: 300, height: 200 }}
         />
         <Text></Text>
         <Image
           source={require("../assets/rightrear.jpg")}
+          loadingIndicatorSource={require("../assets/spinner-1.gif")}
           style={{ width: 300, height: 200 }}
         />
         <Text></Text>
         <Image
           source={require("../assets/leftrear.jpg")}
+          loadingIndicatorSource={require("../assets/spinner-1.gif")}
           style={{ width: 300, height: 200 }}
         />
         <Text></Text>
         <Image
           source={require("../assets/leftfront.jpg")}
+          loadingIndicatorSource={require("../assets/spinner-1.gif")}
           style={{ width: 300, height: 200 }}
         />
         <Button
