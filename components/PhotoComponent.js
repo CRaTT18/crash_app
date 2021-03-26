@@ -270,7 +270,7 @@ const PhotoScreen = ({ navigation }) => {
         <View style={styles.imageContainer}>
           <Image
             source={{ uri: vinImage }}
-            //loadingIndicatorSource={require("../assets/spinner-1.gif")}
+            loadingIndicatorSource={require("../assets/favicon.png")}
             style={styles.image}
           />
           <Button

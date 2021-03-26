@@ -21,10 +21,17 @@ const InfoScreen = ({ navigation }) => {
       JSON.stringify(data),
       `Call: ${call}, Text: ${text}, Send Email: ${sendEmail}`
     );
-    SecureStore.setItemAsync("data", JSON.stringify(data)).catch((error) =>
-      console.log("Could not save user info", error)
-    );
-    //console.log(userinfo);
+    SecureStore.setItemAsync(
+      "data",
+      JSON.stringify({
+        claimNum: data.claimNum,
+        insurance: data.insurance,
+        userAddress: data.userAddress,
+        userEmail: data.userEmail,
+        userName: data.userName,
+        userPhone: data.userPhone,
+      })
+    ).catch((error) => console.log("Could not save user info", error));
   };
 
   useEffect(() => {
@@ -37,19 +44,19 @@ const InfoScreen = ({ navigation }) => {
         data.userEmail;
         data.userName;
         data.userPhone;
-        console.log(data);
+        console.log(data.userName, data.insurance);
       }
     });
-  });
+  }, [data]);
 
-  const sendMail = () => {
+  function sendMail() {
     MailComposer.composeAsync({
       recipients: ["ratt18@hotmail.com"],
       subject: "Email from CrashApp",
       body:
         "Please include contact information and preferred method of contact.",
     });
-  };
+  }
 
   const callShop = () => {
     const url = "tel://12086973888";
