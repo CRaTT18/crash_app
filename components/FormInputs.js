@@ -5,21 +5,18 @@ import { useForm, Controller } from "react-hook-form";
 import * as SecureStore from "expo-secure-store";
 
 const FormInputs = () => {
-  const { control, handleSubmit, errors } = useForm();
+  const { control, handleSubmit, errors, setValue } = useForm();
   const [call, setCall] = useState();
-  const [text, setText] = useState();
+  const [sendText, setSendText] = useState();
   const [sendEmail, setSendEmail] = useState();
 
   const handleCall = () => setCall(!call);
-  const handleText = () => setText(!text);
+  const handleSendText = () => setSendText(!sendText);
   const handleSendEmail = () => setSendEmail(!sendEmail);
 
-  const onSubmit = (data) => {
-    console.log(
-      JSON.stringify(data),
-      `Call: ${call}, Text: ${text}, Send Email: ${sendEmail}`
-    );
-    SecureStore.setItemAsync(
+  const onSubmit = async (data) => {
+    console.log(data);
+    await SecureStore.setItemAsync(
       "data",
       JSON.stringify({
         claimNum: data.claimNum,
@@ -33,19 +30,24 @@ const FormInputs = () => {
   };
 
   useEffect(() => {
+    fetchUser();
+  }, []);
+
+  const fetchUser = async () => {
     SecureStore.getItemAsync("data").then((userdata) => {
       const data = JSON.parse(userdata);
-      if (data) {
-        data.claimNum;
-        data.insurance;
-        data.userAddress;
-        data.userEmail;
-        data.userName;
-        data.userPhone;
-        console.log(data.userName, data.insurance, data.claimNum);
+      try {
+        setValue("claimNum", data.claimNum);
+        setValue("insurance", data.insurance);
+        setValue("userAddress", data.userAddress);
+        setValue("userEmail", data.userEmail);
+        setValue("userName", data.userName);
+        setValue("userPhone", data.userPhone);
+      } catch (error) {
+        console.log("Could not save user info", error);
       }
     });
-  }, []);
+  };
 
   return (
     <>
@@ -56,7 +58,7 @@ const FormInputs = () => {
           <TextInput
             style={styles.input}
             onBlur={onBlur}
-            onChangeText={(value) => onChange(value)}
+            onChangeText={(text) => onChange(text)}
             value={value}
           />
         )}
@@ -73,8 +75,8 @@ const FormInputs = () => {
           <TextInput
             style={styles.input}
             onBlur={onBlur}
-            onChangeText={(value) => onChange(value)}
-            value={text}
+            onChangeText={(text) => onChange(text)}
+            value={value}
           />
         )}
         name="userEmail"
@@ -90,8 +92,8 @@ const FormInputs = () => {
           <TextInput
             style={styles.input}
             onBlur={onBlur}
-            onChangeText={(value) => onChange(value)}
-            value={text}
+            onChangeText={(text) => onChange(text)}
+            value={value}
           />
         )}
         name="userPhone"
@@ -107,8 +109,8 @@ const FormInputs = () => {
           <TextInput
             style={styles.input}
             onBlur={onBlur}
-            onChangeText={(value) => onChange(value)}
-            value={text}
+            onChangeText={(text) => onChange(text)}
+            value={value}
           />
         )}
         name="userAddress"
@@ -122,8 +124,8 @@ const FormInputs = () => {
           <TextInput
             style={styles.input}
             onBlur={onBlur}
-            onChangeText={(value) => onChange(value)}
-            value={text}
+            onChangeText={(text) => onChange(text)}
+            value={value}
           />
         )}
         name="insurance"
@@ -137,8 +139,8 @@ const FormInputs = () => {
           <TextInput
             style={styles.input}
             onBlur={onBlur}
-            onChangeText={(value) => onChange(value)}
-            value={text}
+            onChangeText={(text) => onChange(text)}
+            value={value}
           />
         )}
         name="claimNum"
@@ -147,7 +149,11 @@ const FormInputs = () => {
       <Text></Text>
       <Text>Preferred Method of Contact:</Text>
       <CheckBox title="Phone Call" checked={call} onPress={handleCall} />
-      <CheckBox title="Text Message" checked={text} onPress={handleText} />
+      <CheckBox
+        title="Text Message"
+        checked={sendText}
+        onPress={handleSendText}
+      />
       <CheckBox title="Email" checked={sendEmail} onPress={handleSendEmail} />
       <Button
         style={{ marginTop: 20 }}

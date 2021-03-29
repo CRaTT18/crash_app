@@ -2,11 +2,11 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import DisclaimerScreen from "./components/DisclaimerComponent";
-import InfoScreen from "./components/InfoComponent";
-import InstructionScreen from "./components/InstructionComponent";
-import PhotoScreen from "./components/PhotoComponent";
-import ConfirmationScreen from "./components/ConfirmationComponent";
+import DisclaimerScreen from "./components/Disclaimer";
+import InfoScreen from "./components/Info";
+import InstructionScreen from "./components/Instruction";
+import PhotoScreen from "./components/Photo";
+import ConfirmationScreen from "./components/Confirmation";
 import { View, SafeAreaView, Image } from "react-native";
 
 const RootStack = createStackNavigator();
