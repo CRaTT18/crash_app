@@ -15,7 +15,7 @@ const FormInputs = () => {
   const handleSendEmail = () => setSendEmail(!sendEmail);
 
   const onSubmit = async (data) => {
-    console.log(data);
+    console.log(data, call, sendText, sendEmail);
     await SecureStore.setItemAsync(
       "data",
       JSON.stringify({

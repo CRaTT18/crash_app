@@ -10,6 +10,7 @@ import { Card, Button, Icon } from "react-native-elements";
 import Footer from "./Footer";
 import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
+import * as MediaLibrary from "expo-media-library";
 
 const PhotoScreen = ({ navigation }) => {
   const [vinImage, setVinImage] = useState(null);
@@ -38,6 +39,7 @@ const PhotoScreen = ({ navigation }) => {
         allowsEditing: false,
         aspect: [2, 1],
       });
+      await MediaLibrary.saveToLibraryAsync(vinImage.uri);
       if (!vinImage.cancelled) {
         console.log(vinImage);
         setVinImage(vinImage.uri);
@@ -59,6 +61,7 @@ const PhotoScreen = ({ navigation }) => {
         allowsEditing: false,
         aspect: [2, 1],
       });
+      await MediaLibrary.saveToLibraryAsync(odoImage.uri);
       if (!odoImage.cancelled) {
         console.log(odoImage);
         setOdoImage(odoImage.uri);
@@ -79,6 +82,7 @@ const PhotoScreen = ({ navigation }) => {
         allowsEditing: false,
         aspect: [2, 1],
       });
+      await MediaLibrary.saveToLibraryAsync(rfImage.uri);
       if (!rfImage.cancelled) {
         console.log(rfImage);
         setRfImage(rfImage.uri);
@@ -100,6 +104,7 @@ const PhotoScreen = ({ navigation }) => {
         allowsEditing: false,
         aspect: [2, 1],
       });
+      await MediaLibrary.saveToLibraryAsync(rrImage.uri);
       if (!rrImage.cancelled) {
         console.log(rrImage);
         setRrImage(rrImage.uri);
@@ -121,6 +126,7 @@ const PhotoScreen = ({ navigation }) => {
         allowsEditing: false,
         aspect: [2, 1],
       });
+      await MediaLibrary.saveToLibraryAsync(lrImage.uri);
       if (!lrImage.cancelled) {
         console.log(lrImage);
         setLrImage(lrImage.uri);
@@ -142,6 +148,7 @@ const PhotoScreen = ({ navigation }) => {
         allowsEditing: false,
         aspect: [2, 1],
       });
+      await MediaLibrary.saveToLibraryAsync(lfImage.uri);
       if (!lfImage.cancelled) {
         console.log(lfImage);
         setLfImage(lfImage.uri);
@@ -163,6 +170,7 @@ const PhotoScreen = ({ navigation }) => {
         allowsEditing: false,
         aspect: [2, 1],
       });
+      await MediaLibrary.saveToLibraryAsync(damageImage.uri);
       if (!damageImage.cancelled) {
         console.log(damageImage);
         setDamageImage(damageImage.uri);
@@ -184,6 +192,7 @@ const PhotoScreen = ({ navigation }) => {
         allowsEditing: false,
         aspect: [2, 1],
       });
+      await MediaLibrary.saveToLibraryAsync(damageTopImage.uri);
       if (!damageTopImage.cancelled) {
         console.log(damageTopImage);
         setDamageTopImage(damageTopImage.uri);
@@ -205,6 +214,7 @@ const PhotoScreen = ({ navigation }) => {
         allowsEditing: false,
         aspect: [2, 1],
       });
+      await MediaLibrary.saveToLibraryAsync(damageBottomImage.uri);
       if (!damageBottomImage.cancelled) {
         console.log(damageBottomImage);
         setDamageBottomImage(damageBottomImage.uri);
@@ -226,6 +236,7 @@ const PhotoScreen = ({ navigation }) => {
         allowsEditing: false,
         aspect: [2, 1],
       });
+      await MediaLibrary.saveToLibraryAsync(damageRightImage.uri);
       if (!damageRightImage.cancelled) {
         console.log(damageRightImage);
         setDamageRightImage(damageRightImage.uri);
@@ -247,6 +258,7 @@ const PhotoScreen = ({ navigation }) => {
         allowsEditing: false,
         aspect: [2, 1],
       });
+      await MediaLibrary.saveToLibraryAsync(damageLeftImage.uri);
       if (!damageLeftImage.cancelled) {
         console.log(damageLeftImage);
         setDamageLeftImage(damageLeftImage.uri);
